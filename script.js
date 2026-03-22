@@ -586,3 +586,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 500);
 });
+// Ждем загрузки страницы
+document.addEventListener("DOMContentLoaded", function() {
+    // Получаем параметры из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const userLink = urlParams.get('link'); // Ищем параметр ?link=...
+
+    // Если ссылка передана, вставляем её в твой input
+    if (userLink) {
+        document.getElementById('subLink').value = userLink;
+    }
+});
