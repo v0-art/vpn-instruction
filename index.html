@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Luffy VPN - Инструкции по подключению">
+    <title>Luffy VPN - Terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Effects -->
+    <div class="scanlines"></div>
+    <div class="crt"></div>
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="logo.png" alt="Luffy" class="logo-img" onerror="this.outerHTML='<span class=\'logo-emoji\'>🏴‍☠️</span>'">
+                <span class="logo-text">Luffy_VPN</span>
+            </div>
+            <p class="tagline">> VLESS Reality Protocol // Secure & Fast_</p>
+        </header>
+
+        <!-- Main Terminal -->
+        <section class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <span class="term-btn red"></span>
+                    <span class="term-btn yellow"></span>
+                    <span class="term-btn green"></span>
+                </div>
+                <span class="terminal-title">luffy@vpn: ~</span>
+            </div>
+            
+            <div class="terminal-body">
+                <div id="terminal-history"></div>
+                <div class="terminal-line current">
+                    <span class="prompt">root@luffy:~#</span>
+                    <span id="current-command" class="command"></span>
+                    <span class="cursor">█</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subscription Block -->
+        <section class="subscription-section">
+            <div class="section-label">> subscription.key</div>
+            <div class="subscription-box">
+                <input type="text" id="subLink" class="sub-input" 
+                       value="https://your-server.com/sub/YOUR-KEY" readonly>
+                <button class="copy-btn" onclick="copyLink()">
+                    <span id="copyText">[COPY]</span>
+                </button>
+            </div>
+            <p class="sub-note">⚠ WARNING: Private key - do not share!</p>
+        </section>
+
+        <!-- Quick Import -->
+        <section class="quick-import">
+            <div class="section-label">> quick_import.sh</div>
+            <p class="section-desc">Быстрый импорт подписки в Happ:</p>
+            
+            <div class="import-buttons-center">
+                <button class="import-btn-large" onclick="openApp('happ')">
+                    <span class="import-icon">📱</span>
+                    <span>OPEN IN HAPP</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Platforms Section -->
+        <section class="platforms-section">
+            <div class="section-terminal">
+                <div class="terminal-header small">
+                    <div class="terminal-buttons">
+                        <span class="term-btn red"></span>
+                        <span class="term-btn yellow"></span>
+                        <span class="term-btn green"></span>
+                    </div>
+                    <span class="terminal-title">platforms</span>
+                </div>
+                <div class="terminal-body small">
+                    <div class="terminal-line">
+                        <span class="prompt">root@luffy:~#</span>
+                        <span class="command typed">ls /platforms/</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="platform-grid">
+                <button class="platform-card" onclick="selectPlatform('windows')">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 12V6.75L9 5.43V11.91L3 12M20 3V11.75L10 11.9V5.21L20 3M3 13L9 13.09V19.9L3 18.75V13M20 13.25V22L10 20.09V13.1L20 13.25Z"/>
+                    </svg>
+                    <span class="platform-name">Windows</span>
+                </button>
+                <button class="platform-card" onclick="selectPlatform('android')">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 17.97 6.91L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14Z"/>
+                    </svg>
+                    <span class="platform-name">Android</span>
+                </button>
+                <button class="platform-card" onclick="selectPlatform('ios')">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5M13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                    </svg>
+                    <span class="platform-name">iOS</span>
+                </button>
+                <button class="platform-card" onclick="selectPlatform('macos')">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 2H20C21.1 2 22 2.9 22 4V16C22 17.1 21.1 18 20 18H13L14 21V22H10V21L11 18H4C2.9 18 2 17.1 2 16V4C2 2.9 2.9 2 4 2M4 4V13H20V4H4Z"/>
+                    </svg>
+                    <span class="platform-name">macOS</span>
+                </button>
+                <button class="platform-card" onclick="selectPlatform('linux')">
+                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C10.03 2 8.5 4.03 8.5 6.5C8.5 7.79 8.89 8.96 9.56 9.84C7.53 10.69 6.09 12.62 6 14.89L6.03 15.15L6 15.5V18.5C6 19.88 7.12 21 8.5 21H15.5C16.88 21 18 19.88 18 18.5V15.5L17.97 15.15L18 14.89C17.91 12.62 16.47 10.69 14.44 9.84C15.11 8.96 15.5 7.79 15.5 6.5C15.5 4.03 13.97 2 12 2Z"/>
+                    </svg>
+                    <span class="platform-name">Linux</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- App Selection Modal -->
+        <div id="app-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="section-terminal">
+                    <div class="terminal-header small">
+                        <div class="terminal-buttons">
+                            <span class="term-btn red" onclick="closeModal()"></span>
+                            <span class="term-btn yellow"></span>
+                            <span class="term-btn green"></span>
+                        </div>
+                        <span class="terminal-title" id="modal-title">apps</span>
+                    </div>
+                    <div class="terminal-body small">
+                        <div id="modal-terminal-history"></div>
+                        <div class="terminal-line current">
+                            <span class="prompt">root@luffy:<span id="modal-path">/platforms</span>#</span>
+                            <span id="modal-command" class="command"></span>
+                            <span class="cursor">█</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="app-grid" class="app-grid">
+                    <!-- Apps will be inserted here -->
+                </div>
+
+                <!-- Instructions Panel -->
+                <div id="instructions-panel" class="instructions-panel hidden">
+                    <div class="instructions-header">
+                        <span class="instructions-title" id="instructions-title">README.md</span>
+                        <button class="close-instructions" onclick="closeInstructions()">[×]</button>
+                    </div>
+                    <div class="instructions-content" id="instructions-content">
+                        <!-- Instructions will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-terminal">
+                <span class="prompt">root@luffy:~#</span>
+                <span class="command">exit</span>
+            </div>
+            <p class="footer-copy">[ Luffy_VPN © 2026 ] // VLESS Reality</p>
+            <p class="footer-support">Поддержка: <a href="https://t.me/pirat_vpn_news?direct" target="_blank">@pirat_vpn_news</a></p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
