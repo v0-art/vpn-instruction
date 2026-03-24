@@ -252,21 +252,36 @@ function showToast(message, type = 'success') {
     setTimeout(() => toast.classList.add('show'), 10);
     setTimeout(() => toast.classList.remove('show'), 3000);
 }
+// ============================================
+// INIT
+// ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Скрываем модалку при загрузке жестко
+    // Скрываем модалку при загрузке
     document.getElementById('app-modal').style.display = 'none';
 
-    // Инициализация Telegram Web App
     if (window.Telegram && Telegram.WebApp) {
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
     }
 
-    // ИСПРАВЛЕНИЕ: Получаем подписку. Ищем параметр 'link' (как у вас в боте)
+    // РАСКОММЕНТИРУЙТЕ СТРОКУ НИЖЕ, ЕСЛИ ССЫЛКА ВСЁ РАВНО НЕ ПОЯВИТСЯ
+    // Это покажет всплывающее окно с реальным URL, который видит Telegram
+    // alert("Полный URL: " + window.location.href);
+
+    // 1. Ищем в обычных параметрах (?link=...)
     const params = new URLSearchParams(window.location.search);
-    const userLink = params.get('link') || params.get('sub'); // Проверяем оба варианта на всякий случай
-    
+    let userLink = params.get('link') || params.get('sub');
+
+    // 2. Ищем в Hash-параметрах (иногда Telegram переносит ? в # при WebApp)
+    if (!userLink && window.location.hash.includes('link=')) {
+        // Убираем всё до знака # и парсим
+        const hashString = window.location.hash.split('?')[1] || window.location.hash.substring(1);
+        const hashParams = new URLSearchParams(hashString);
+        userLink = hashParams.get('link');
+    }
+
+    // Если нашли ссылку - вставляем
     if (userLink) {
         document.getElementById('subLink').value = userLink;
     }
