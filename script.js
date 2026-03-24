@@ -257,12 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Скрываем модалку при загрузке жестко
     document.getElementById('app-modal').style.display = 'none';
 
+    // Инициализация Telegram Web App
     if (window.Telegram && Telegram.WebApp) {
         Telegram.WebApp.ready();
         Telegram.WebApp.expand();
     }
 
+    // ИСПРАВЛЕНИЕ: Получаем подписку. Ищем параметр 'link' (как у вас в боте)
     const params = new URLSearchParams(window.location.search);
-    const subUrl = params.get('sub');
-    if (subUrl) document.getElementById('subLink').value = subUrl;
+    const userLink = params.get('link') || params.get('sub'); // Проверяем оба варианта на всякий случай
+    
+    if (userLink) {
+        document.getElementById('subLink').value = userLink;
+    }
 });
