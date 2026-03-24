@@ -4,173 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Luffy VPN - Инструкции по подключению">
-    <title>Luffy VPN - Terminal</title>
+    <title>Luffy VPN - Подключение</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Effects -->
-    <div class="scanlines"></div>
-    <div class="crt"></div>
-    <div class="bg-overlay"></div>
+    <div class="bg-gradient"></div>
+    
     <div class="container">
-        <!-- Header -->
+        <!-- Header / Logo -->
         <header class="header">
             <div class="logo">
-                <img src="logo.png" alt="Luffy" class="logo-img" onerror="this.outerHTML='<span class=\'logo-emoji\'>🏴‍☠️</span>'">
-                <span class="logo-text">Luffy_VPN</span>
+                <img src="logo.png" alt="Luffy VPN" class="logo-img" onerror="this.outerHTML='<div class=\'logo-placeholder\'>🏴‍☠️</div>'">
             </div>
-            <p class="tagline">> VLESS Reality Protocol // Secure & Fast_</p>
+            <h1 class="title">Luffy VPN</h1>
+            <p class="subtitle">Безопасное подключение в один клик</p>
         </header>
 
-        <!-- Main Terminal -->
-        <section class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <span class="term-btn red"></span>
-                    <span class="term-btn yellow"></span>
-                    <span class="term-btn green"></span>
-                </div>
-                <span class="terminal-title">luffy@vpn: ~</span>
-            </div>
-            
-            <div class="terminal-body">
-                <div id="terminal-history"></div>
-                <div class="terminal-line current">
-                    <span class="prompt">root@luffy:~#</span>
-                    <span id="current-command" class="command"></span>
-                    <span class="cursor">█</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Subscription Block -->
-        <section class="subscription-section">
-            <div class="section-label">> subscription.key</div>
+        <!-- Subscription -->
+        <section class="subscription-card">
+            <h2 class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+                Ваша подписка
+            </h2>
             <div class="subscription-box">
                 <input type="text" id="subLink" class="sub-input" 
-                       value="https://your-server.com/sub/YOUR-KEY" readonly>
+                       value="https://your-server.com/sub/YOUR-KEY" readonly 
+                       placeholder="Ссылка подписки">
                 <button class="copy-btn" onclick="copyLink()">
-                    <span id="copyText">[COPY]</span>
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                    <span id="copyText">Копировать</span>
                 </button>
             </div>
-            <p class="sub-note">⚠ WARNING: Private key - do not share!</p>
+            <p class="sub-warning">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-2h2v2h-2zm0-4V7h2v6h-2z"/>
+                </svg>
+                Не передавайте эту ссылку третьим лицам
+            </p>
         </section>
 
-        <!-- Quick Import -->
-        <section class="quick-import">
-            <div class="section-label">> quick_import.sh</div>
-            <p class="section-desc">Быстрый импорт подписки в Happ:</p>
-            
-            <div class="import-buttons-center">
-                <button class="import-btn-large" onclick="openApp('happ')">
-                    <span class="import-icon">📱</span>
-                    <span>OPEN IN HAPP</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- Platforms Section -->
+        <!-- Platforms -->
         <section class="platforms-section">
-            <div class="section-terminal">
-                <div class="terminal-header small">
-                    <div class="terminal-buttons">
-                        <span class="term-btn red"></span>
-                        <span class="term-btn yellow"></span>
-                        <span class="term-btn green"></span>
-                    </div>
-                    <span class="terminal-title">platforms</span>
-                </div>
-                <div class="terminal-body small">
-                    <div class="terminal-line">
-                        <span class="prompt">root@luffy:~#</span>
-                        <span class="command typed">ls /platforms/</span>
-                    </div>
-                </div>
-            </div>
-
+            <h2 class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z"/>
+                </svg>
+                Выберите платформу
+            </h2>
             <div class="platform-grid">
                 <button class="platform-card" onclick="selectPlatform('windows')">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3 12V6.75L9 5.43V11.91L3 12M20 3V11.75L10 11.9V5.21L20 3M3 13L9 13.09V19.9L3 18.75V13M20 13.25V22L10 20.09V13.1L20 13.25Z"/>
-                    </svg>
+                    <div class="platform-icon-wrapper">
+                        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 12V6.75L9 5.43V11.91L3 12M20 3V11.75L10 11.9V5.21L20 3M3 13L9 13.09V19.9L3 18.75V13M20 13.25V22L10 20.09V13.1L20 13.25Z"/>
+                        </svg>
+                    </div>
                     <span class="platform-name">Windows</span>
                 </button>
+                
                 <button class="platform-card" onclick="selectPlatform('android')">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 17.97 6.91L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14Z"/>
-                    </svg>
+                    <div class="platform-icon-wrapper">
+                        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16.61 15.15C16.15 15.15 15.77 14.78 15.77 14.32S16.15 13.5 16.61 13.5C17.07 13.5 17.45 13.86 17.45 14.32C17.45 14.78 17.07 15.15 16.61 15.15M7.41 15.15C6.95 15.15 6.57 14.78 6.57 14.32C6.57 13.86 6.95 13.5 7.41 13.5C7.87 13.5 8.24 13.86 8.24 14.32C8.24 14.78 7.87 15.15 7.41 15.15M16.91 10.14L18.58 7.26C18.67 7.09 18.61 6.88 18.45 6.79C18.28 6.69 18.07 6.75 17.97 6.91L16.29 9.83C14.95 9.22 13.5 8.9 12 8.91C10.47 8.91 9 9.24 7.73 9.82L6.04 6.91C5.95 6.74 5.74 6.68 5.57 6.78C5.4 6.87 5.35 7.08 5.44 7.25L7.1 10.13C4.25 11.69 2.29 14.58 2 18H22C21.72 14.59 19.77 11.7 16.91 10.14Z"/>
+                        </svg>
+                    </div>
                     <span class="platform-name">Android</span>
                 </button>
+                
                 <button class="platform-card" onclick="selectPlatform('ios')">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5M13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                    </svg>
+                    <div class="platform-icon-wrapper">
+                        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5M13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                        </svg>
+                    </div>
                     <span class="platform-name">iOS</span>
                 </button>
+                
                 <button class="platform-card" onclick="selectPlatform('macos')">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M4 2H20C21.1 2 22 2.9 22 4V16C22 17.1 21.1 18 20 18H13L14 21V22H10V21L11 18H4C2.9 18 2 17.1 2 16V4C2 2.9 2.9 2 4 2M4 4V13H20V4H4Z"/>
-                    </svg>
+                    <div class="platform-icon-wrapper">
+                        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M4 2H20C21.1 2 22 2.9 22 4V16C22 17.1 21.1 18 20 18H13L14 21V22H10V21L11 18H4C2.9 18 2 17.1 2 16V4C2 2.9 2.9 2 4 2M4 4V13H20V4H4Z"/>
+                        </svg>
+                    </div>
                     <span class="platform-name">macOS</span>
                 </button>
+                
                 <button class="platform-card" onclick="selectPlatform('linux')">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C10.03 2 8.5 4.03 8.5 6.5C8.5 7.79 8.89 8.96 9.56 9.84C7.53 10.69 6.09 12.62 6 14.89L6.03 15.15L6 15.5V18.5C6 19.88 7.12 21 8.5 21H15.5C16.88 21 18 19.88 18 18.5V15.5L17.97 15.15L18 14.89C17.91 12.62 16.47 10.69 14.44 9.84C15.11 8.96 15.5 7.79 15.5 6.5C15.5 4.03 13.97 2 12 2Z"/>
-                    </svg>
+                    <div class="platform-icon-wrapper">
+                        <svg class="platform-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12.504 2c-2.256 0-3.507 2.06-3.507 4.632 0 1.018.186 2.113.658 3.029.249.48.422.936.512 1.362-.072.057-.145.12-.215.187-.668-.421-1.431-.691-2.268-.691-2.215 0-3.957 1.741-3.957 3.957 0 1.209.532 2.293 1.373 3.055-.505.616-.808 1.399-.808 2.253 0 1.773 1.444 3.216 3.217 3.216 1.064 0 2.01-.493 2.636-1.262.507.167 1.048.262 1.608.262h.742c.559 0 1.1-.095 1.607-.262.627.769 1.573 1.262 2.637 1.262 1.772 0 3.216-1.443 3.216-3.216 0-.854-.303-1.637-.808-2.253.841-.762 1.373-1.846 1.373-3.055 0-2.216-1.742-3.957-3.957-3.957-.837 0-1.6.27-2.268.691-.07-.067-.143-.13-.215-.187.09-.426.263-.882.512-1.362.472-.916.658-2.011.658-3.029C16.011 4.06 14.76 2 12.504 2z"/>
+                        </svg>
+                    </div>
                     <span class="platform-name">Linux</span>
                 </button>
             </div>
         </section>
 
-        <!-- App Selection Modal -->
-        <div id="app-modal" class="modal hidden">
-            <div class="modal-content">
-                <div class="section-terminal">
-                    <div class="terminal-header small">
-                        <div class="terminal-buttons">
-                            <span class="term-btn red" onclick="closeModal()"></span>
-                            <span class="term-btn yellow"></span>
-                            <span class="term-btn green"></span>
-                        </div>
-                        <span class="terminal-title" id="modal-title">apps</span>
-                    </div>
-                    <div class="terminal-body small">
-                        <div id="modal-terminal-history"></div>
-                        <div class="terminal-line current">
-                            <span class="prompt">root@luffy:<span id="modal-path">/platforms</span>#</span>
-                            <span id="modal-command" class="command"></span>
-                            <span class="cursor">█</span>
-                        </div>
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2 class="section-title">
+                <svg class="section-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+                </svg>
+                Частые вопросы
+            </h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Не получается подключиться, что делать?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <ul>
+                            <li>Обновите подписку в приложении</li>
+                            <li>Попробуйте другой сервер из списка</li>
+                            <li>Перезапустите приложение</li>
+                            <li>Проверьте интернет-соединение</li>
+                            <li>Если ничего не помогает — напишите в поддержку</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div id="app-grid" class="app-grid">
-                    <!-- Apps will be inserted here -->
-                </div>
-
-                <!-- Instructions Panel -->
-                <div id="instructions-panel" class="instructions-panel hidden">
-                    <div class="instructions-header">
-                        <span class="instructions-title" id="instructions-title">README.md</span>
-                        <button class="close-instructions" onclick="closeInstructions()">[×]</button>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как проверить, что VPN работает?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Перейдите на сайт <a href="https://2ip.ru" target="_blank">2ip.ru</a> — там должен отображаться IP-адрес другой страны, а не ваш реальный.</p>
                     </div>
-                    <div class="instructions-content" id="instructions-content">
-                        <!-- Instructions will be inserted here -->
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Как часто нужно обновлять подписку?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Рекомендуем обновлять подписку раз в день или при возникновении проблем с подключением. Большинство приложений делают это автоматически.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Можно ли использовать на нескольких устройствах?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Да, вы можете использовать одну подписку на нескольких устройствах одновременно. Просто добавьте ту же ссылку подписки на каждое устройство.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>VPN замедляет интернет?</span>
+                        <svg class="faq-arrow" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Мы используем протокол VLESS Reality, который обеспечивает минимальные потери скорости. Если скорость низкая — попробуйте выбрать другой сервер, ближе к вашему расположению.</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <div class="footer-terminal">
-                <span class="prompt">root@luffy:~#</span>
-                <span class="command">exit</span>
-            </div>
-            <p class="footer-copy">[ Luffy_VPN © 2026 ] // VLESS Reality</p>
-            <p class="footer-support">Поддержка: <a href="https://t.me/pirat_vpn_news?direct" target="_blank">@pirat_vpn_news</a></p>
+            <p class="footer-copy">Luffy VPN © 2026</p>
+            <p class="footer-protocol">VLESS Reality Protocol</p>
+            <a href="https://t.me/pirat_vpn_news" target="_blank" class="footer-support">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.67-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.25.38-.51 1.07-.78 4.18-1.82 6.97-3.02 8.38-3.61 3.99-1.66 4.83-1.95 5.37-1.96.12 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.04.21z"/>
+                </svg>
+                Поддержка
+            </a>
         </footer>
+    </div>
+
+    <!-- Modal -->
+    <div id="app-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Выберите приложение</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="app-grid" class="app-grid">
+                <!-- Apps will be inserted here -->
+            </div>
+            
+            <!-- Instructions -->
+            <div id="instructions-panel" class="instructions-panel hidden">
+                <div class="instructions-header">
+                    <button class="back-btn" onclick="backToApps()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        </svg>
+                        Назад
+                    </button>
+                    <h4 id="instructions-title">Инструкция</h4>
+                </div>
+                <div id="instructions-content" class="instructions-content">
+                    <!-- Instructions will be inserted here -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Toast -->
